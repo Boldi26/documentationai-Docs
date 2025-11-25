@@ -1,0 +1,131 @@
+---
+title: Events Management
+description: Detailed guide to creating and managing university events on Kucska Bolka
+---
+
+## Managing Events on Kucska Bolka
+
+Event management is at the heart of Kucska Bolka. Whether you're planning a small study group or a massive campus party, our tools provide everything you need to organize successful gatherings.
+
+With comprehensive features for creation, promotion, and attendance tracking, you'll have full control over your events.
+
+<Columns cols={2}>
+  <Card title="Event Planning" icon="calendar" href="#event-planning">
+    Step-by-step tools for organizing any type of university event.
+  </Card>
+  <Card title="Attendance Tracking" icon="users" href="#attendance-tracking">
+    Monitor RSVPs, check-ins, and post-event analytics.
+  </Card>
+</Columns>
+
+## Creating Your First Event
+
+The event creation process is designed to be user-friendly yet comprehensive.
+
+<Steps>
+  <Step title="Choose Event Type" icon="tag">
+    Select from categories like party, study session, or sports event.
+  </Step>
+  <Step title="Set Basic Details" icon="edit">
+    Add title, description, date, time, and location.
+    
+    <CodeGroup tabs="JavaScript,Go">
+      ````javascript
+const event = {
+  type: 'party',
+  title: 'New Year Bash',
+  description: 'Ring in 2025 with style',
+  startTime: '2024-12-31T22:00:00Z',
+  endTime: '2025-01-01T04:00:00Z',
+  location: 'Campus Quad',
+  capacity: 500
+};
+
+// API call to create event
+fetch('/api/events', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${token}` },
+  body: JSON.stringify(event)
+});
+````
+      ````go
+type Event struct {
+    Type        string `json:"type"`
+    Title       string `json:"title"`
+    Description string `json:"description"`
+    StartTime   string `json:"startTime"`
+    EndTime     string `json:"endTime"`
+    Location    string `json:"location"`
+    Capacity    int    `json:"capacity"`
+}
+
+// Create event via API
+resp, err := http.Post("/api/events", "application/json", bytes.NewBuffer(jsonData))
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Add Media and Settings" icon="image">
+    Upload photos, set privacy, and configure notifications.
+  </Step>
+  <Step title="Publish and Promote" icon="megaphone">
+    Share your event with the university community.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Public Events" icon="globe">
+    Open to all students, great for large gatherings and awareness.
+  </Tab>
+  <Tab title="Invite-Only" icon="lock">
+    Send personal invitations for exclusive events.
+  </Tab>
+  <Tab title="Recurring Events" icon="refresh-cw">
+    Set up weekly meetings or monthly parties automatically.
+  </Tab>
+</Tabs>
+
+<Expandable title="Event Moderation" default-open="false">
+  University administrators can review and approve events before they go live, ensuring compliance with campus policies.
+  
+  <Callout kind="info">All events undergo automatic content filtering for inappropriate content.</Callout>
+</Expandable>
+
+## Attendance and Analytics
+
+Track who attends your events and gather insights for future planning.
+
+| Metric | Description | Use Case |
+|--------|-------------|----------|
+| RSVP Count | Number of confirmed attendees | Gauge interest level |
+| Check-ins | Actual attendance at event | Measure success |
+| Demographics | Age, major, year of study | Target future events |
+
+<ExpandableGroup>
+  <Expandable title="How are check-ins handled?" default-open="false">
+    Attendees can check in via QR code or location-based check-in for accurate attendance tracking.
+  </Expandable>
+  <Expandable title="Can I export attendance data?" default-open="false">
+    Yes, organizers can download CSV reports of attendees for follow-up or analysis.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">Use attendance data to improve future events and build better relationships with your community.</Callout>
+
+## Event Promotion
+
+Maximize attendance with our built-in promotion tools.
+
+```bash
+# Example of sharing event via API
+curl -X POST /api/events/123/share \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{"platforms": ["email", "social"]}'
+```
+
+Share events across university channels, send email notifications, and integrate with campus social media.
+
+<Expandable title="Integration Options" default-open="false">
+  Connect with university email systems, calendar apps, and social media platforms for broader reach.
+</Expandable>
+
+Our comprehensive event management system ensures your university events are organized, promoted, and successful.

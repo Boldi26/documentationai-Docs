@@ -1,0 +1,116 @@
+---
+title: Authentication
+description: Guide to user authentication and security features in Kucska Bolka
+---
+
+## Authentication in Kucska Bolka
+
+Security is paramount in Kucska Bolka, especially for a university platform handling event data. We implement robust authentication mechanisms to protect user privacy and ensure only verified university members can access the platform.
+
+Our authentication system supports multiple methods, including university email verification and social login options.
+
+<Columns cols={3}>
+  <Card title="Email Verification" icon="mail" href="#email-verification">
+    Secure sign-up with university domain validation.
+  </Card>
+  <Card title="Two-Factor Auth" icon="shield" href="#two-factor">
+    Optional 2FA for enhanced account security.
+  </Card>
+  <Card title="Session Management" icon="clock" href="#session-management">
+    Automatic session handling and logout policies.
+  </Card>
+</Columns>
+
+## Signing Up
+
+To join Kucska Bolka, users must verify their university affiliation through email.
+
+<Steps>
+  <Step title="Enter Details" icon="user">
+    Provide your name, university email, and password.
+  </Step>
+  <Step title="Verify Email" icon="check-circle">
+    Click the verification link sent to your university email.
+    
+    <CodeGroup tabs="cURL,Bash">
+      ````bash
+curl -X POST /api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "student@university.edu",
+    "password": "securePass123",
+    "universityId": "12345"
+  }'
+````
+      ````bash
+# Verification step
+curl -X POST /api/auth/verify \
+  -d "token=abc123def456"
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Complete Profile" icon="settings">
+    Add profile picture and interests to enhance discovery.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Student Sign-up" icon="graduation-cap">
+    Students use their .edu email for automatic verification.
+  </Tab>
+  <Tab title="Staff Sign-up" icon="briefcase">
+    University staff follow the same process with additional role assignment.
+  </Tab>
+  <Tab title="Guest Access" icon="eye">
+    Limited read-only access for non-university visitors.
+  </Tab>
+</Tabs>
+
+<Expandable title="What if my university email changes?" default-open="false">
+  You can update your email in account settings. Re-verification is required for security.
+  
+  <Callout kind="alert">Always keep your university affiliation current for continued access.</Callout>
+</Expandable>
+
+## Login Methods
+
+We support various login methods to accommodate different user preferences.
+
+| Method | Description | Security Level |
+|--------|-------------|----------------|
+| Password | Standard email/password | Medium |
+| Two-Factor | Password + SMS/App code | High |
+| Social Login | Google/Microsoft accounts | Medium |
+
+<ExpandableGroup>
+  <Expandable title="How does two-factor authentication work?" default-open="false">
+    After entering your password, you'll receive a code via SMS or authenticator app to complete login.
+  </Expandable>
+  <Expandable title="Can I use social login?" default-open="false">
+    Yes, we support login with university-approved Google and Microsoft accounts.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="info">Enable two-factor authentication in your security settings for maximum protection.</Callout>
+
+## Security Best Practices
+
+Protecting your account is crucial for maintaining privacy in a university setting.
+
+```python
+# Example secure password check
+import re
+
+def is_strong_password(password):
+    return len(password) >= 8 and re.search(r'[A-Z]', password) and re.search(r'\d', password)
+
+print(is_strong_password("SecurePass123"))  # True
+```
+
+We recommend using unique passwords, enabling 2FA, and logging out from public devices.
+
+<Expandable title="Password Recovery" default-open="false">
+  If you forget your password, use the 'Forgot Password' link. A reset email will be sent to your verified university address.
+</Expandable>
+
+Our platform uses industry-standard encryption and regular security audits to keep your data safe.

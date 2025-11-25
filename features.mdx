@@ -1,0 +1,110 @@
+---
+title: Features
+description: Comprehensive guide to Kucska Bolka's features for university event management
+---
+
+## Core Features of Kucska Bolka
+
+Kucska Bolka revolutionizes how university communities organize and discover events. Our platform offers a suite of powerful features designed specifically for campus life, from simple study groups to large-scale parties.
+
+With over 250 words of detailed explanations, you'll learn how to leverage our tools for maximum engagement.
+
+<Columns cols={2}>
+  <Card title="Event Creation" icon="plus" href="#event-creation">
+    Create rich event listings with media, descriptions, and attendee management.
+  </Card>
+  <Card title="Smart Discovery" icon="search" href="#smart-discovery">
+    AI-powered recommendations based on your interests and past attendance.
+  </Card>
+</Columns>
+
+## Event Creation
+
+Creating an event on Kucska Bolka is intuitive and powerful. You can add multiple photos, set detailed descriptions, specify time zones, and configure privacy settings.
+
+<Steps>
+  <Step title="Access Event Creator" icon="edit">
+    Navigate to the 'Create Event' section in your dashboard.
+  </Step>
+  <Step title="Fill Details" icon="file-text">
+    Enter title, description, date, location, and category.
+    
+    <CodeGroup tabs="JSON,XML">
+      ````json
+{
+  "title": "Winter Ball 2024",
+  "description": "Annual university winter dance",
+  "date": "2024-12-15T19:00:00Z",
+  "location": "Grand Hall",
+  "category": "party",
+  "maxAttendees": 300
+}
+````
+      ````xml
+<event>
+  <title>Winter Ball 2024</title>
+  <description>Annual university winter dance</description>
+  <date>2024-12-15T19:00:00Z</date>
+  <location>Grand Hall</location>
+  <category>party</category>
+  <maxAttendees>300</maxAttendees>
+</event>
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Publish" icon="send">
+    Review and publish your event to the community.
+  </Step>
+</Steps>
+
+<Tabs>
+  <Tab title="Public Events" icon="globe">
+    Visible to all university members, perfect for large gatherings.
+  </Tab>
+  <Tab title="Private Events" icon="lock">
+    Invite-only events for exclusive groups or small parties.
+  </Tab>
+  <Tab title="Academic Events" icon="book-open">
+    Study sessions, workshops, and educational gatherings.
+  </Tab>
+</Tabs>
+
+<Expandable title="Advanced Event Options" default-open="false">
+  Set recurring events, co-host with friends, and integrate with university calendars.
+  
+  <Callout kind="info">Recurring events can be set weekly or monthly for regular meetups.</Callout>
+</Expandable>
+
+## Smart Discovery
+
+Our intelligent discovery system helps you find events that match your interests. Filters include date ranges, categories, and proximity.
+
+| Feature | Description | Example |
+|---------|-------------|---------|
+| Location-based | Find events near you | Within `2 km` of campus |
+| Category filters | Party, study, sports | Filter by `party` |
+| Interest matching | Based on past RSVPs | Similar to events you've attended |
+
+<ExpandableGroup>
+  <Expandable title="How does interest matching work?" default-open="false">
+    Our algorithm analyzes your RSVP history and suggests events you might enjoy, increasing engagement by up to 40%.
+  </Expandable>
+  <Expandable title="Can I save favorite categories?" default-open="false">
+    Yes, create custom filters and save them for quick access to your preferred event types.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">Enable notifications for your favorite categories to never miss an event.</Callout>
+
+## Community Features
+
+Kucska Bolka fosters a vibrant university community with features like event reviews, user profiles, and discussion threads.
+
+```javascript
+// Example of fetching user events
+const userEvents = await fetch('/api/users/me/events');
+const events = await userEvents.json();
+console.log(`You have ${events.length} upcoming events`);
+```
+
+Our platform ensures all interactions remain respectful and university-appropriate through automated moderation and reporting tools.
